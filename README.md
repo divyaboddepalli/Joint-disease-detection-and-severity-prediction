@@ -78,18 +78,3 @@ Code Quality & Modularity – Structured, reusable code suitable for research or
 Healthcare Problem-Solving – Addresses real-world medical imaging challenges, translating AI insights into actionable results.
 
 This project is ideal for AI, deep learning, medical imaging, and healthcare tech roles.
-
-📌 Folder Structure
-Joint-disease-detection-and-severity-prediction/
-├── KneeScanPredictor/              # Core application code
-│   ├── app.py                      # Flask app
-│   ├── main.py                     # Training/inference pipeline
-│   ├── models.py                   # Model definitions
-│   ├── utils.py                    # Helper functions
-│   ├── forms.py                    # Flask forms
-│   ├── static/                     # CSS, JS, uploaded images
-│   └── templates/                  # HTML templates
-├── datasets/                        # Sample datasets (external links for full dataset)
-├── requirements.txt                 # Python dependencies
-├── README.md                        # Project overview (this file)
-└── .gitignore                        # Files/folders to ignore
