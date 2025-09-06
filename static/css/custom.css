@@ -1,0 +1,165 @@
+/* Custom styles to complement Bootstrap */
+
+/* Override body font and background */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bs-dark-bg-subtle);
+}
+
+/* Blue-themed medical header */
+.header-medical {
+    background: linear-gradient(135deg, var(--bs-primary), var(--bs-info));
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Emphasized card styling */
+.card-medical {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.card-medical:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Upload area styling */
+.upload-container {
+    border: 2px dashed var(--bs-primary);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Results styling */
+.result-highlight {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--bs-primary);
+}
+
+/* Results card - Severity levels with color coding */
+.severity-normal {
+    color: var(--bs-success);
+}
+
+.severity-mild {
+    color: var(--bs-info);
+}
+
+.severity-moderate {
+    color: var(--bs-warning);
+}
+
+.severity-severe {
+    color: var(--bs-danger);
+}
+
+/* Dashboard stats */
+.stat-card {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bs-primary);
+}
+
+.stat-label {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    color: var(--bs-secondary);
+}
+
+/* Footer styling */
+.footer {
+    padding: 1.5rem 0;
+    background-color: var(--bs-gray-900);
+    color: var(--bs-gray-200);
+    margin-top: 3rem;
+}
+
+/* Chart container */
+.chart-container {
+    background-color: var(--bs-body-bg);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+/* Image containers */
+.scan-image-container {
+    max-height: 300px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.scan-image-container img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Timeline for scan history */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--bs-primary);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 0.5rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bs-primary);
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .header-medical {
+        padding: 1.5rem 0;
+    }
+    
+    .timeline {
+        padding-left: 1.5rem;
+    }
+    
+    .timeline-item:before {
+        left: -1.9rem;
+        width: 12px;
+        height: 12px;
+    }
+}

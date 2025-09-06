@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+
+{% block title %}Physician Dashboard - Multi - Disease Prediction {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="mb-3">Welcome, Dr. {{ current_user.username }}</h1>
+            <p class="lead text-muted">Analyze conditions with AI assistance</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <a href="{{ url_for('upload') }}" class="btn btn-primary">
+                <i class="fas fa-upload me-2"></i>Upload New Patient Scan
+            </a>
+        </div>
+    </div>
+    
+    {% if scan_results %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card card-medical">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h5 mb-0">Analytics Overview</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value">{{ scan_results|length }}</div>
+                                <div class="stat-label">Total Cases</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value">
+                                    {{ scan_results[0].knee_health_score|round|int }}%
+                                </div>
+                                <div class="stat-label">Latest Case Score</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value">{{ scan_results[0].severity_level }}</div>
+                                <div class="stat-label">Latest Severity</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="stat-value">
+                                    {% if scan_results|length > 1 %}
+                                        {% set diff = scan_results[0].knee_health_score - scan_results[1].knee_health_score %}
+                                        {% if diff > 0 %}
+                                            <span class="text-success">+{{ diff|round(1) }}%</span>
+                                        {% elif diff < 0 %}
+                                            <span class="text-danger">{{ diff|round(1) }}%</span>
+                                        {% else %}
+                                            <span>0%</span>
+                                        {% endif %}
+                                    {% else %}
+                                        <span>N/A</span>
+                                    {% endif %}
+                                </div>
+                                <div class="stat-label">Score Change</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card card-medical">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h5 mb-0">Case History Trends</h2>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container" style="height: 300px;">
+                        {% set history_data = [] %}
+                        {% for result in scan_results %}
+                            {% set _ = history_data.append({'date': result.scan_date.strftime('%Y-%m-%d'), 'score': result.knee_health_score}) %}
+                        {% endfor %}
+                        <canvas id="progressHistoryChart" data-history='{{ history_data|tojson }}'></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="h4 mb-3">Patient Case History</h2>
+            <div class="timeline">
+                {% for result in scan_results %}
+                <div class="timeline-item">
+                    <div class="card card-medical">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="scan-image-container">
+                                        <img src="{{ url_for('static', filename='uploads/' + result.image_path.split('/')[-1]) }}" alt="Knee Scan" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <h3 class="h5 mb-3">{{ result.disease_name }}</h3>
+                                    <p class="text-muted mb-2">
+                                        <i class="far fa-calendar-alt me-2"></i>{{ result.scan_date.strftime('%Y-%m-%d %H:%M') }}
+                                    </p>
+                                    <div class="mb-2">
+                                        <strong>Severity:</strong> 
+                                        <span class="severity-{{ result.severity_level.lower() }}">{{ result.severity_level }}</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Model Confidence:</strong> {{ (result.confidence * 100)|round|int }}%
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Joint Health Score:</strong> {{ result.knee_health_score|round|int }}%
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                    <div class="text-center">
+                                        <div class="position-relative" style="width: 120px; height: 60px; margin: 0 auto;">
+                                            <canvas id="confidenceGauge{{ result.id }}" data-confidence="{{ result.confidence }}"></canvas>
+                                            <div class="position-absolute top-50 start-50 translate-middle fw-bold fs-5" id="confidenceText{{ result.id }}">
+                                                {{ (result.confidence * 100)|round|int }}%
+                                            </div>
+                                        </div>
+                                        <p class="text-muted mt-2">Diagnostic Confidence</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <div class="d-flex justify-content-end">
+                                <a href="{{ url_for('results', result_id=result.id) }}" class="btn btn-sm btn-outline-primary">
+                                    View Clinical Report
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card card-medical">
+                <div class="card-body text-center py-5">
+                    <div class="display-1 text-muted mb-3">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h2 class="h4 mb-3">No Patient Cases Found</h2>
+                    <p class="text-muted mb-4">
+                        You haven't uploaded any patient knee scans yet. Start by uploading your first case.
+                    </p>
+                    <a href="{{ url_for('upload') }}" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>Upload First Patient Scan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        {% for result in scan_results %}
+        // Create confidence gauge for each result
+        const confidenceGaugeCanvas{{ result.id }} = document.getElementById('confidenceGauge{{ result.id }}');
+        if (confidenceGaugeCanvas{{ result.id }}) {
+            const confidenceValue{{ result.id }} = parseFloat(confidenceGaugeCanvas{{ result.id }}.dataset.confidence || 0);
+            
+            new Chart(confidenceGaugeCanvas{{ result.id }}, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [confidenceValue{{ result.id }} * 100, (1 - confidenceValue{{ result.id }}) * 100],
+                        backgroundColor: [
+                            'rgba(46, 204, 113, 0.8)',
+                            'rgba(236, 240, 241, 0.5)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    circumference: 180,
+                    rotation: 270,
+                    cutout: '75%',
+                    plugins: {
+                        tooltip: {
+                            enabled: false
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Add the confidence text in the center
+            const confidenceTextElement{{ result.id }} = document.getElementById('confidenceText{{ result.id }}');
+            if (confidenceTextElement{{ result.id }}) {
+                confidenceTextElement{{ result.id }}.innerText = `${Math.round(confidenceValue{{ result.id }} * 1000) / 10}%`;
+            }
+        }
+        {% endfor %}
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Patient Scan - Multi - Disease prediction {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="mb-3">Upload Patient Scan</h1>
+            <p class="lead text-muted">
+                Upload X-ray  scan for AI-assisted clinical analysis.
+            </p>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card card-medical">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h5 mb-0">Upload Patient Scan</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+                        <!-- Removed form.hidden_tag() and form references -->
+                        
+                        <div class="upload-container mb-4">
+                            <div class="upload-icon display-4 text-primary mb-3">
+                                <i class="fas fa-file-medical"></i>
+                            </div>
+                            <h3 class="h5 mb-3">Select  Radiograph</h3>
+                            <p class="text-muted mb-4">Supported formats: JPG, JPEG, PNG</p>
+                            
+                            <div class="input-group mb-3">
+                                <input type="file" name="image" id="uploadInput" class="form-control">
+                                <label for="uploadInput" class="btn btn-outline-primary">
+                                    <i class="fas fa-file-upload me-2"></i>Import Image
+                                </label>
+                            </div>
+                            
+                            <div id="selectedFileName" class="text-muted mt-2" style="display: none;"></div>
+                            <div id="imagePreview" class="mt-3" style="display: none;">
+                                <img src="" alt="Image Preview" class="img-fluid img-thumbnail" style="max-height: 200px;">
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid mt-4">
+                            <input type="submit" class="btn btn-primary btn-lg" value="Analyze Patient Scan">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const uploadInput = document.getElementById('uploadInput');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImage = imagePreview.querySelector('img');
+        
+        uploadInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                // Display selected file name
+                selectedFileName.textContent = 'Selected file: ' + this.files[0].name;
+                selectedFileName.style.display = 'block';
+                
+                // Load and display a preview image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                }
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                selectedFileName.style.display = 'none';
+                imagePreview.style.display = 'none';
+            }
+        });
+    });
+</script>
+{% endblock %}
