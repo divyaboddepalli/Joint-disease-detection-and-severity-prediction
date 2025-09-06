@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}KneeOA Scanner - Knee Osteoarthritis Prediction{% endblock %}
+
+{% block content %}
+<section class="header-medical py-5 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-3">Knee Osteoarthritis Detection</h1>
+                <p class="lead mb-4">
+                    Early detection and accurate assessment of knee osteoarthritis using advanced machine learning technology.
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('upload') }}" class="btn btn-primary btn-lg px-4 me-md-2">Upload Scan</a>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-light btn-lg px-4">View Dashboard</a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-4 me-md-2">Get Started</a>
+                        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg px-4">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="text-center">
+                    <!-- SVG illustration of knee joint -->
+                    <svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M200,50 C240,80 280,100 300,150 C280,200 240,220 200,250 C160,220 120,200 100,150 C120,100 160,80 200,50 Z" fill="none" stroke="#3498db" stroke-width="4"/>
+                        <path d="M150,150 C170,140 180,140 200,150 C220,140 230,140 250,150 C230,160 220,160 200,150 C180,160 170,160 150,150 Z" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="2"/>
+                        <circle cx="200" cy="150" r="5" fill="#3498db"/>
+                        <line x1="180" y1="100" x2="220" y2="200" stroke="#3498db" stroke-width="2" stroke-dasharray="5,5"/>
+                        <line x1="220" y1="100" x2="180" y2="200" stroke="#3498db" stroke-width="2" stroke-dasharray="5,5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-medical h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                            <i class="fas fa-upload text-primary"></i>
+                        </div>
+                        <h3 class="card-title h5">Upload Your Knee Scan</h3>
+                        <p class="card-text">
+                            Upload your knee MRI or X-ray scan to our secure platform.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-medical h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                            <i class="fas fa-brain text-primary"></i>
+                        </div>
+                        <h3 class="card-title h5">AI Analysis</h3>
+                        <p class="card-text">
+                            Our AI model analyzes your scan using advanced machine learning algorithms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-medical h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                            <i class="fas fa-chart-line text-primary"></i>
+                        </div>
+                        <h3 class="card-title h5">Detailed Results</h3>
+                        <p class="card-text">
+                            Get comprehensive results with disease detection, severity assessment, and health comparison.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="benefits py-5 bg-dark">
+    <div class="container">
+        <h2 class="text-center mb-5">Benefits</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex align-items-start mb-4">
+                    <div class="me-3 fs-3 text-primary">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3 class="h5">Early Detection</h3>
+                        <p>
+                            Identify osteoarthritis in its early stages before symptoms become severe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start mb-4">
+                    <div class="me-3 fs-3 text-primary">
+                        <i class="fas fa-laptop-medical"></i>
+                    </div>
+                    <div>
+                        <h3 class="h5">Remote Assessment</h3>
+                        <p>
+                            Get assessments from the comfort of your home without waiting for specialist appointments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start mb-4">
+                    <div class="me-3 fs-3 text-primary">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div>
+                        <h3 class="h5">Progress Tracking</h3>
+                        <p>
+                            Monitor your knee health over time and track the effectiveness of treatments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start mb-4">
+                    <div class="me-3 fs-3 text-primary">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div>
+                        <h3 class="h5">Clinical Support</h3>
+                        <p>
+                            Provide your healthcare provider with detailed AI-assisted analysis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-4">Ready to Get Started?</h2>
+                <p class="lead mb-4">
+                    Join thousands of users who are taking control of their knee health with our AI-powered platform.
+                </p>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('upload') }}" class="btn btn-lg btn-primary">Upload Your Scan Now</a>
+                {% else %}
+                    <a href="{{ url_for('register') }}" class="btn btn-lg btn-primary">Create Free Account</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
