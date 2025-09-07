@@ -45,7 +45,8 @@ Matplotlib / Seaborn
 
 # 🚀 QuickStart
 
-## Clone the repository
+
+### Clone the repository
 ```bash
 git clone https://github.com/divyaboddepalli/Joint-disease-detection-and-severity-prediction.git
 cd joint-disease-detection-and-severity-prediction
