@@ -33,11 +33,7 @@ OpenCV / NumPy / Pandas
 Flask
 Matplotlib / Seaborn
 
-🚀 QuickStart
-
-## Clone the repository
-git clone https://github.com/divyaboddepalli/Joint-disease-detection-and-severity-prediction.git
-cd joint-disease-detection-and-severity-prediction
+# 🚀 QuickStart
 
 ## Install dependencies
 pip install -r requirements.txt
