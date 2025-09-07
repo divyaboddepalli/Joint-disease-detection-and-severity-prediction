@@ -1,9 +1,9 @@
-🦴 Joint Disease Detection and Severity Prediction
+# 🦴 Joint Disease Detection and Severity Prediction
 
 AI-driven system for detecting multiple joint disorders from X-rays and predicting severity levels for Knee Osteoarthritis (KOA).
 Built with EfficientNet, Grad-CAM explainability, and a Flask web interface for interactive testing.
 
-✨ Features
+# ✨ Features
 
 Detects multiple joint disorders, including:
 
@@ -25,7 +25,7 @@ Flask web app for uploading X-rays and viewing results
 
 Clean, modular, and scalable training and inference pipelines
 
-🧰 Tech Stack
+# 🧰 Tech Stack
 
 Python
 TensorFlow / Keras
@@ -35,17 +35,17 @@ Matplotlib / Seaborn
 
 🚀 QuickStart
 
-# Clone the repository
+## Clone the repository
 git clone https://github.com/divyaboddepalli/Joint-disease-detection-and-severity-prediction.git
 cd joint-disease-detection-and-severity-prediction
 
-# Install dependencies
+## Install dependencies
 pip install -r requirements.txt
 
-# Run the web app
+## Run the web app
 python app.py
 
-📁 Dataset & Models
+# 📁 Dataset & Models
 
 Datasets: Sample X-ray datasets included. Full datasets stored externally due to large size.
 
@@ -53,7 +53,7 @@ Pre-trained Models: EfficientNet-based models for KOA severity prediction and mu
 
 Large Files: Files exceeding GitHub limits (50–100 MB) are stored using Git LFS or external storage.
 
-🖼️ Demo
+# 🖼️ Demo
 
 Upload an X-ray or joint scan via the web interface.
 
@@ -63,7 +63,7 @@ Get KOA severity grading (if applicable).
 
 Examine Grad-CAM heatmaps highlighting affected regions.
 
-📝 Why This Project Stands Out
+# 📝 Why This Project Stands Out
 
 This project highlights expertise in end-to-end AI for medical imaging, from data preprocessing and deep learning model training to interactive web deployment:
 
