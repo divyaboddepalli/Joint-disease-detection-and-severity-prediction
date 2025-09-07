@@ -64,6 +64,16 @@ Datasets: Sample X-ray datasets included. Full datasets stored externally due to
 
 Pre-trained Models: EfficientNet-based models for KOA severity prediction and multi-disease detection included.
 
+# Datasets
+
+You can download the datasets here: [Knee Osteoarthritis (KOA)](https://drive.google.com/drive/folders/133ndKqey--LHksTAX7yC_GxcP2fwBJwF?usp=sharing)
+
+You can download the datasets here: [Rheumatoid Arthritis](https://drive.google.com/drive/folders/1cGvn0v0d1givYc2bxuMP68PDd_RgWL2b?usp=sharing)
+
+You can download the datasets here: [Fracture](https://drive.google.com/drive/folders/1oAmIdgjOY-tlyqHh7OLHN-i7aKIPOSrN?usp=sharing)
+
+You can download the datasets here: [Non-Fracture](https://drive.google.com/drive/folders/1vs4pUg_zG5vxRzFtmqwpcqSqrRGkPUwv?usp=sharing)
+
 # 🖼️ Demo
 
 Upload an X-ray or joint scan via the web interface.
