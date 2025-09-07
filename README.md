@@ -14,9 +14,13 @@ Fractures
 Severity grading for KOA:
 
 KL Grade 0 → No OA
+
 KL Grade 1 → Doubtful OA
+
 KL Grade 2 → Mild OA
+
 KL Grade 3 → Moderate OA
+
 KL Grade 4 → Severe OA
 
 Grad-CAM heatmaps for visual explainability of predictions
