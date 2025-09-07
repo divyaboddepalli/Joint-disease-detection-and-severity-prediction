@@ -1,4 +1,4 @@
-** 🦴 Joint Disease Detection and Severity Prediction **
+# 🦴 Joint Disease Detection and Severity Prediction 
 
 AI-driven system for detecting multiple joint disorders from X-rays and predicting severity levels for Knee Osteoarthritis (KOA).
 Built with EfficientNet, Grad-CAM explainability, and a Flask web interface for interactive testing.
