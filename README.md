@@ -5,13 +5,15 @@ Built with EfficientNet, Grad-CAM explainability, and a Flask web interface for 
 
 # ✨ Features
 
-Detects multiple joint disorders, including:
+## Detects multiple joint disorders, including:
 
 Knee Osteoarthritis (KOA)
+
 Rheumatoid Arthritis
+
 Fractures
 
-Severity grading for KOA:
+## Severity grading for KOA:
 
 KL Grade 0 → No OA
 
@@ -32,9 +34,13 @@ Clean, modular, and scalable training and inference pipelines
 # 🧰 Tech Stack
 
 Python
+
 TensorFlow / Keras
+
 OpenCV / NumPy / Pandas
+
 Flask
+
 Matplotlib / Seaborn
 
 # 🚀 QuickStart
