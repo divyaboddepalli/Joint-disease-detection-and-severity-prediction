@@ -45,16 +45,17 @@ Matplotlib / Seaborn
 
 # 🚀 QuickStart
 
+## Clone the repository
 
-### Clone the repository
-```bash
 git clone https://github.com/divyaboddepalli/Joint-disease-detection-and-severity-prediction.git
 cd joint-disease-detection-and-severity-prediction
 
 ## Install dependencies
+
 pip install -r requirements.txt
 
 ## Run the web app
+
 python app.py
 
 # 📁 Dataset & Models
@@ -62,8 +63,6 @@ python app.py
 Datasets: Sample X-ray datasets included. Full datasets stored externally due to large size.
 
 Pre-trained Models: EfficientNet-based models for KOA severity prediction and multi-disease detection included.
-
-Large Files: Files exceeding GitHub limits (50–100 MB) are stored using Git LFS or external storage.
 
 # 🖼️ Demo
 
@@ -84,9 +83,3 @@ Medical Image Analysis – Strong experience with X-ray-based multi-disease dete
 Explainable AI – Grad-CAM visualizations make predictions interpretable and clinically relevant.
 
 Web Integration – Flask app demonstrates deployment skills and real-time testing capabilities.
-
-Code Quality & Modularity – Structured, reusable code suitable for research or production extension.
-
-Healthcare Problem-Solving – Addresses real-world medical imaging challenges, translating AI insights into actionable results.
-
-This project is ideal for AI, deep learning, medical imaging, and healthcare tech roles.
